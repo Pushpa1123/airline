@@ -19,18 +19,6 @@ The contract emits two events:
 1. `FlightBooked`: Triggered when a passenger successfully books a flight.
 2. `FlightCanceled`: Triggered when a flight booking is canceled.
 
-## Getting Started
-
-To deploy and interact with the `AirlineBookingContract` contract, follow these steps:
-
-1. **Install Dependencies**: Ensure you have the necessary dependencies installed, including a Solidity compiler and a development environment like Remix or Hardhat.
-
-2. **Compile Contract**: Use a Solidity compiler to compile the `AirlineBookingContract.sol` file.
-
-3. **Deploy Contract**: Deploy the compiled contract to the Ethereum network. Ensure that you have sufficient Ether for deployment and transaction fees.
-
-4. **Interact with the Contract**: Once deployed, interact with the contract using Ethereum wallets or scripts. Users can book flights by calling the `bookFlight` function and cancel bookings using the `cancelFlightBooking` function.
-
 ## Smart Contract Security
 
 While this contract provides basic functionalities for airline booking management, it's essential to conduct thorough testing and auditing before deploying it to the Ethereum mainnet. Potential security considerations include ensuring proper authorization controls, handling of edge cases, and protection against common attack vectors such as reentrancy and integer overflow/underflow.
