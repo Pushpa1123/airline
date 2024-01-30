@@ -1,0 +1,38 @@
+// SPDX-License-Identifier: MIT
+pragma solidity ^0.8.0;
+
+contract AirlineBookingContract {
+    address public owner;
+    mapping(uint256 => address) public flightBookings;
+
+    event FlightBooked(uint256 indexed flightNumber, address indexed passenger);
+    event FlightCanceled(uint256 indexed flightNumber, address indexed passenger);
+
+
+    constructor() {
+        owner = msg.sender;
+    }
+
+    function bookFlight(uint256 flightNumber) public {
+        assert(flightNumber > 20);
+        require(flightBookings[flightNumber] == address(0), "Flight already booked");
+
+        flightBookings[flightNumber] = msg.sender;
+        emit FlightBooked(flightNumber, msg.sender);
+
+        require(flightBookings[flightNumber] == msg.sender, "Failed to book flight"); // Ensures flight is successfully booked
+    }
+
+    function cancelFlightBooking(uint256 flightNumber) public {
+        address passenger = flightBookings[flightNumber];
+        emit FlightCanceled(flightNumber, msg.sender);
+
+        if (passenger == address(0)) {
+            revert("Flight booking already canceled");
+        } else {
+            flightBookings[flightNumber] = address(0);
+        }
+    }
+
+    
+}
